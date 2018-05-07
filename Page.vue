@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <code-language-switcher v-if="$page.frontmatter.pageClass === 'split'" />
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
