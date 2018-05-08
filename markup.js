@@ -4,13 +4,13 @@ function tables(tokens) {
     for (let i = 0; i < tokens.length; i++) {
         let t = tokens[i]
         if (t.type === 'table_open' && (i === 0 || tokens[i-1].content !== `<div class="table">\n`)) {
-            for (let j = i + i; j < tokens.length; j++) {
+            for (let j = i + 1; j < tokens.length; j++) {
                 let t2 = tokens[j];
                 if (t2.type === 'table_close') {
                     let replaceTokens = [
-                        openBlock('table'),
+                        openBlock('table', t.level),
                         ...tokens.slice(i, j + 1),
-                        closeBlock()
+                        closeBlock(t.level)
                     ];
                     tokens.splice(i, (j - i), ...replaceTokens);
 
@@ -48,6 +48,7 @@ function split(tokens) {
 
             let leftTokens = tokens.slice(leftContentStart, i);
             let rightTokens = tokens.slice(i + 1, rightContentEnd + 1);
+            codeBlocks(rightTokens);
 
             let replaceTokens = [
                 openBlock('split'),
@@ -73,9 +74,9 @@ function codeBlocks(tokens) {
         let t = tokens[i]
         if (t.type === 'fence' && t.info && (i === 0 || tokens[i-1].content !== "<code-block>\n")) {
             tokens.splice(i, 1,
-                block(`<code-block language="${t.info}">`),
+                block(`<code-block language="${t.info}">`, t.level),
                 t,
-                block('</code-block>')
+                block('</code-block>', t.level)
             )
 
             // skip ahead
@@ -88,19 +89,20 @@ function isHeading(t, type) {
     return t.type === type && (t.tag === 'h1' || t.tag === 'h2' || t.tag === 'h3');
 }
 
-function block(tag) {
+function block(tag, level) {
     var t = new Token('html_block', '', 0);
-    t.content = `${tag}\n\n`;
+    t.content = `${tag}\n`;
     t.block = true;
+    t.level = level || 0;
     return t;
 }
 
-function openBlock(klass) {
-    return block(`<div class="${klass}">`);
+function openBlock(klass, level) {
+    return block(`<div class="${klass}">`, level);
 }
 
-function closeBlock() {
-    return block('</div>');
+function closeBlock(level) {
+    return block('</div>', level);
 }
 
 module.exports = (md) => {
@@ -109,7 +111,6 @@ module.exports = (md) => {
     md.parse= (...args) => {
         const tokens = parse.call(md, ...args)
         tables(tokens);
-        codeBlocks(tokens);
         split(tokens);
         return tokens;
     }
