@@ -1,4 +1,5 @@
-var Token = require('markdown-it/lib/token');
+const Token = require('markdown-it/lib/token');
+const container = require('markdown-it-container')
 
 function tables(tokens) {
     for (let i = 0; i < tokens.length; i++) {
@@ -48,7 +49,13 @@ function split(tokens) {
 
             let leftTokens = tokens.slice(leftContentStart, i);
             let rightTokens = tokens.slice(i + 1, rightContentEnd + 1);
-            codeBlocks(rightTokens);
+            codeBlocks(rightTokens, t => {
+                return [
+                    block(`<code-block language="${t.info}">`, t.level),
+                    t,
+                    block('</code-block>', t.level)
+                ]
+            });
 
             let replaceTokens = [
                 openBlock('split'),
@@ -69,18 +76,57 @@ function split(tokens) {
     }
 }
 
-function codeBlocks(tokens) {
+function codeToggles(tokens) {
+    for (let i = 0; i < tokens.length; i++) {
+        let t = tokens[i]
+        if (t.type === 'container_code_open') {
+            // find the close tag
+            for (let j = i + 1; j < tokens.length; j++) {
+                if (tokens[j].type === 'container_code_close') {
+                    let innerTokens = tokens.slice(i + 1, j)
+                    let languages = [];
+
+                    codeBlocks(innerTokens, t => {
+                        languages.push(`'${t.info}'`);
+                        return [
+                            block(`<div v-if="p.selectedLanguage === '${t.info}'">`, t.level),
+                            t,
+                            block('</div>', t.level)
+                        ]
+                    });
+
+                    let openBlock = block('<code-toggle :languages="['+languages.join(',')+']">\n<template slot-scope="p">', tokens[i].level);
+                    let closeBlock = block('</template>\n</code-toggle>', tokens[j].level);
+                    openBlock.nesting = tokens[i].nesting;
+                    closeBlock.nesting = tokens[j].nesting;
+
+                    let replaceTokens = [
+                        openBlock,
+                        ...innerTokens,
+                        closeBlock
+                    ]
+
+                    tokens.splice(i, j - i, ...replaceTokens);
+
+                    // skip ahead
+                    i += (replaceTokens.length - 1)
+
+                    break;
+                }
+            }
+        }
+    }
+}
+
+function codeBlocks(tokens, replace) {
     for (let i = 0; i < tokens.length; i++) {
         let t = tokens[i]
         if (t.type === 'fence' && t.info && (i === 0 || tokens[i-1].content !== "<code-block>\n")) {
-            tokens.splice(i, 1,
-                block(`<code-block language="${t.info}">`, t.level),
-                t,
-                block('</code-block>', t.level)
-            )
+            let replaceTokens = replace(t)
+            tokens.splice(i, 1, ...replaceTokens)
 
             // skip ahead
-            i += 2
+            i += (replaceTokens.length - 1)
         }
     }
 }
@@ -108,10 +154,17 @@ function closeBlock(level) {
 module.exports = (md) => {
     // override parse()
     const parse = md.parse
-    md.parse= (...args) => {
+    md.parse = (...args) => {
         const tokens = parse.call(md, ...args)
         tables(tokens);
+        codeToggles(tokens);
         split(tokens);
         return tokens;
     }
+
+    md.use(container, 'code', {
+        render(tokens, idx) {
+            return '';
+        }
+    })
 }
