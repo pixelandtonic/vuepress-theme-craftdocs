@@ -217,3 +217,39 @@ pre[class="language-php"]:before {
 pre[class="language-twig"]:before {
   content: "twig";
 }
+
+.algolia-search-wrapper {
+  .algolia-autocomplete {
+    .ds-dropdown-menu {
+      padding: 0.7rem;
+    }
+
+    .algolia-docsearch-suggestion {
+      .algolia-docsearch-suggestion--category-header {
+        padding: 5px 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .algolia-docsearch-suggestion--subcategory-column {
+        background: none;
+      }
+
+      .algolia-docsearch-suggestion--category-header {
+        color: inherit;
+        background: none;
+      }
+    }
+
+    .algolia-docsearch-suggestion--highlight {
+      color: $accentColor;
+    }
+  }
+}
+
+.algolia-autocomplete {
+  .algolia-docsearch-suggestion--text {
+    .algolia-docsearch-suggestion--highlight {
+      box-shadow: none;
+    }
+  }
+}
