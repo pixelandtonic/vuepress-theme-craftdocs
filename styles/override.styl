@@ -74,7 +74,7 @@ ul.code-language-switcher {
       color lighten($textColor, 20%)
 
       &:hover {
-        text-decoration: none;
+        text-decoration: none !important;
 
         &:not(.active) {
           background: rgba(255,255,255,0.5)
@@ -82,7 +82,7 @@ ul.code-language-switcher {
       }
 
       &.active {
-        background-color rgba(27,31,35,0.05)
+        cursor default
         background-color #fff
       }
     }
