@@ -125,8 +125,9 @@ function split(tokens) {
             let leftTokens = tokens.slice(leftContentStart, i);
             let rightTokens = tokens.slice(i + 1, rightContentEnd + 1);
             codeBlocks(rightTokens, t => {
+                let language = t.info.replace(/{.*/, '')
                 return [
-                    block(`<code-block language="${t.info}">`, t.level),
+                    block(`<code-block language="${language}">`, t.level),
                     t,
                     block('</code-block>', t.level)
                 ]
@@ -162,9 +163,10 @@ function codeToggles(tokens) {
                     let languages = [];
 
                     codeBlocks(innerTokens, t => {
-                        languages.push(`'${t.info}'`);
+                        let language = t.info.replace(/{.*/, '')
+                        languages.push(`'${language}'`);
                         return [
-                            block(`<div v-if="p.selectedLanguage === '${t.info}'">`, t.level),
+                            block(`<div v-if="p.selectedLanguage === '${language}'">`, t.level),
                             t,
                             block('</div>', t.level)
                         ]
