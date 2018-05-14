@@ -1,45 +1,33 @@
+// Converts a color to rgba(), extracting white values
+// hat tip https://stackoverflow.com/a/6672545/1688568
+toRgba(color)
+  r = red(color)
+  g = green(color)
+  b = blue(color)
+  min = min(r, g, b)
+  a = (255 - min) / 255
+  rA = (r - min) / a
+  gA = (g - min) / a
+  bA = (b - min) / a
+  "rgba(%s, %s, %s, %s)" % (rA gA bA a)
+
+
+
+.sidebar {
+  background: $sidebarColor;
+}
+
 .content {
-  ul.code-language-switcher {
-    height: $navbarHeight;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0.7rem 1.5rem;
-    font-size: 15px;
-    line-height: 1.4;
-    z-index: 2;
-    background: darken($codeBgColor, 25%);
+  tr:nth-child(2n) {
+    background-color $sidebarColor
+  }
 
-    li {
-      margin: 0 5px 0 0;
-      padding: 0;
-      list-style-type: none;
+  code {
+    background toRgba($codeBgColor)
+  }
 
-      a {
-        display: block;
-        padding: 0 0.625rem;
-        line-height: 2.2rem;
-        cursor: pointer;
-        border-radius: 4px;
-        color: #ccc;
-
-        &:hover {
-          text-decoration: none;
-
-          &:not(.active) {
-            box-shadow: inset 0 0 0 1px lighten($codeBgColor, 20%);
-          }
-        }
-
-        &.active {
-          background: lighten($codeBgColor, 25%);
-          //color: $textColor;
-          text-shadow: 0 1px 2px darken($codeBgColor, 25%);
-          cursor: default;
-        }
-      }
-    }
+  .highlighted-line {
+    background-color darken($codeBgColor, 5%)
   }
 
   .code-toggle {
@@ -55,6 +43,47 @@
 
       &:before {
         display: none;
+      }
+    }
+  }
+}
+
+ul.code-language-switcher {
+  height: $navbarHeight;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0.7rem 1.5rem;
+  font-size: 15px;
+  line-height: 1.4;
+  z-index: 2;
+  background: darken($codeBgColor, 5%);
+
+  li {
+    margin: 0 5px 0 0;
+    padding: 0;
+    list-style-type: none;
+
+    a {
+      display: block;
+      padding: 0 0.625rem;
+      line-height: 2.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+      color lighten($textColor, 20%)
+
+      &:hover {
+        text-decoration: none;
+
+        &:not(.active) {
+          background: rgba(255,255,255,0.5)
+        }
+      }
+
+      &.active {
+        background-color rgba(27,31,35,0.05)
+        background-color #fff
       }
     }
   }
@@ -110,18 +139,19 @@
             box-sizing: border-box;
 
             &.right {
-              color: #fff;
-
-              code {
-                color: #ccc;
-              }
-
               pre,
               pre[class*="language-"] {
-                padding: 0;
+                margin-left: -2.5rem;
+                margin-right: -2.5rem;
+                padding: 0 2.5rem;
 
                 &:before {
                   display: none;
+                }
+
+                .highlighted-line {
+                  margin: 0 -2.5rem;
+                  padding: 0 2.5rem;
                 }
               }
             }
