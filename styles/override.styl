@@ -18,6 +18,34 @@ toRgba(color)
 }
 
 .content {
+  dl {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1.25rem 1.5rem;
+    line-height: 1.7;
+    background: $sidebarColor;
+    border-radius: 6px;
+
+    dt, dd {
+      margin: 0.25rem 0 0;
+      word-wrap: break-word;
+    }
+
+    dt {
+      width: 8rem;
+      padding-right: 1rem;
+      box-sizing: border-box;
+      display: flex;
+      align-items: top;
+      justify-content: flex-end;
+      font-weight: bold;
+    }
+
+    dd {
+      width: calc(100% - 8rem);
+    }
+  }
+
   tr:nth-child(2n) {
     background-color $sidebarColor
   }
