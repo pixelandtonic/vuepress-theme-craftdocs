@@ -1,13 +1,13 @@
 {
   "name": "vuepress-theme-craftdocs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "vuepress-theme",
   "main": "index.js",
   "repository": "https://github.com/pixelandtonic/vuepress-theme-craftdocs",
   "author": "brandonkelly <brandon@pixelandtonic.com>",
   "license": "MIT",
   "private": false,
-  "devDependencies": {
+  "dependencies": {
     "vuex": "^3.0.1"
   }
 }
