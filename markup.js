@@ -163,7 +163,7 @@ function codeToggles(tokens) {
                     let languages = [];
 
                     codeBlocks(innerTokens, t => {
-                        let language = t.info.replace(/{.*/, '')
+                        let language = t.info.replace(/{.*/, '').trim()
                         languages.push(`'${language}'`);
                         return [
                             block(`<div v-if="p.selectedLanguage === '${language}'">`, t.level),
