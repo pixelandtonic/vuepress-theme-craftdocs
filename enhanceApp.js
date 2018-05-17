@@ -1,12 +1,10 @@
 import { siteData } from '@temp/siteData'
 import CodeToggle from './CodeToggle'
-import CodeBlock from './CodeBlock'
 import CodeLanguageSwitcher from './CodeLanguageSwitcher'
 import outboundLink from './OutboundLink'
 
 export default ({ Vue, options, router, siteData }) => {
     Vue.component('code-toggle', CodeToggle)
-    Vue.component('code-block', CodeBlock)
     Vue.component('code-language-switcher', CodeLanguageSwitcher)
     Vue.component('outbound-link', outboundLink)
 

@@ -190,7 +190,7 @@ function codeToggles(tokens) {
 function codeBlocks(tokens, replace) {
     for (let i = 0; i < tokens.length; i++) {
         let t = tokens[i]
-        if (t.type === 'fence' && t.info && (i === 0 || tokens[i-1].content !== "<code-block>\n")) {
+        if (t.type === 'fence' && t.info) {
             let replaceTokens = replace(t)
             tokens.splice(i, 1, ...replaceTokens)
 
