@@ -1,6 +1,6 @@
 # Craft Documentation Theme for VuePress
 
-This is the [VuePress](https://vuepress.vuejs.org/) theme used for Craft CMS documentation.
+This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS documentation](https://docs.craftcms.com/).
 
 ## Setup
 
@@ -78,6 +78,7 @@ split: true
 code:
   - php
   - twig
+---
 ```
 
 (Use the same language handles defined by `themeConfig.codeLanguages` in `.vuepress/config.js`.)
