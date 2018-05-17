@@ -1,12 +1,14 @@
 import { siteData } from '@temp/siteData'
-import codeToggle from './components/CodeToggle'
-import codeBlock from './components/CodeBlock'
-import codeLanguageSwitcher from './components/CodeLanguageSwitcher'
+import CodeToggle from './CodeToggle'
+import CodeBlock from './CodeBlock'
+import CodeLanguageSwitcher from './CodeLanguageSwitcher'
+import outboundLink from './OutboundLink'
 
 export default ({ Vue, options, router, siteData }) => {
-    Vue.component('code-toggle', codeToggle)
-    Vue.component('code-block', codeBlock)
-    Vue.component('code-language-switcher', codeLanguageSwitcher)
+    Vue.component('code-toggle', CodeToggle)
+    Vue.component('code-block', CodeBlock)
+    Vue.component('code-language-switcher', CodeLanguageSwitcher)
+    Vue.component('outbound-link', outboundLink)
 
     Object.assign(options, {
         data: {
