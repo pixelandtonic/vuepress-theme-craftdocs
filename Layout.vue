@@ -76,6 +76,7 @@ export default {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
           'no-sidebar': !this.shouldShowSidebar,
+          'split': this.$page.frontmatter.split
         },
         userPageClass
       ]
