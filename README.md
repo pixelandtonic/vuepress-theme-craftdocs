@@ -38,7 +38,7 @@ You can create code toggles by wrapping multiple fenced code blocks with a `code
 
     ::: code
     
-    ```php
+    ``` php
     echo "Hey, $name";
     ```
     
