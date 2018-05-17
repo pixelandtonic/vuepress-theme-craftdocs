@@ -6,7 +6,7 @@
             </li>
         </ul>
         <div v-for="language in languages">
-            <slot :name="language" v-if="language == (usePageToggle ? $root.codeLanguage : selectedLanguage)"/>
+            <slot :name="language" v-if="language == (usePageToggle ? $store.state.codeLanguage : selectedLanguage)"/>
         </div>
     </div>
 </template>

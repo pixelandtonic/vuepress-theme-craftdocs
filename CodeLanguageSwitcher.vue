@@ -1,7 +1,7 @@
 <template>
     <ul class="code-language-switcher">
         <li v-for="language in $page.frontmatter.code">
-            <a :class="{ active: isActive(language) }" @click="$root.setCodeLanguage(language)">{{ $site.themeConfig.codeLanguages[language] }}</a>
+            <a :class="{ active: isActive(language) }" @click="$store.commit('changeCodeLanguage', language)">{{ $site.themeConfig.codeLanguages[language] }}</a>
         </li>
     </ul>
 </template>
@@ -10,7 +10,13 @@
     export default {
         methods: {
             isActive(language) {
-                return this.$root.codeLanguage === language
+                return this.$store.state.codeLanguage === language
+            }
+        },
+
+        beforeMount() {
+            if (this.$page.frontmatter.code.indexOf(this.$store.state.codeLanguage) === -1) {
+                this.$store.commit('changeCodeLanguage', this.$page.frontmatter.code[0])
             }
         }
     }
