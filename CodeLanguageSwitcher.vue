@@ -1,7 +1,7 @@
 <template>
     <ul class="code-language-switcher">
-        <li v-for="(label, language) in $site.themeConfig.codeLanguages">
-            <a :class="{ active: isActive(language) }" @click="$root.setCodeLanguage(language)">{{ label }}</a>
+        <li v-for="language in $page.frontmatter.code">
+            <a :class="{ active: isActive(language) }" @click="$root.setCodeLanguage(language)">{{ $site.themeConfig.codeLanguages[language] }}</a>
         </li>
     </ul>
 </template>

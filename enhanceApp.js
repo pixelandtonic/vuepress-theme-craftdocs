@@ -16,15 +16,15 @@ export default ({ Vue, options, router, siteData }) => {
         },
 
         beforeMount() {
-            if (typeof this.$site.themeConfig.codeLanguages !== 'undefined') {
+            if (typeof this.$page.frontmatter.code !== 'undefined') {
                 if (
                     typeof localStorage !== 'undefined' &&
                     typeof localStorage[this.storagePrefix+'codeLanguage'] !== 'undefined' &&
-                    typeof this.$site.themeConfig.codeLanguages[localStorage[this.storagePrefix+'codeLanguage']] !== 'undefined'
+                    this.$page.frontmatter.code.indexOf(localStorage[this.storagePrefix+'codeLanguage']) !== -1
                 ) {
                     this.codeLanguage = localStorage[this.storagePrefix+'codeLanguage']
                 } else {
-                    this.codeLanguage = Object.keys(this.$site.themeConfig.codeLanguages)[0];
+                    this.codeLanguage = this.$page.frontmatter.code[0];
                 }
             }
         },

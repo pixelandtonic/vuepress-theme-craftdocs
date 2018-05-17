@@ -123,7 +123,7 @@ ul.code-language-switcher {
 
 .theme-container.split {
   .page {
-    ul.code-language-switcher {
+    & > ul.code-language-switcher {
       position: fixed;
       top: $navbarHeight;
       padding: 0.7rem 2.5rem;
@@ -149,7 +149,7 @@ ul.code-language-switcher {
         font-size: 0;
       }
 
-      ul.code-language-switcher {
+      & > ul.code-language-switcher {
         right: 0;
         width: "calc(50% - %s)" % ($sidebarWidth / 2);
       }
@@ -198,7 +198,7 @@ ul.code-language-switcher {
 @media (max-width: $MQNarrow) {
   .theme-container.split {
     .page {
-      ul.code-language-switcher {
+      & > ul.code-language-switcher {
         padding-left: 2rem;
         padding-right: 2rem;
         width: "calc(100% - %s)" % ($sidebarWidth * 0.82);
@@ -216,7 +216,7 @@ ul.code-language-switcher {
 @media (max-width: $MQMobile) {
   .theme-container.split {
     .page {
-      ul.code-language-switcher {
+      & > ul.code-language-switcher {
         width: 100%;
       }
     }
@@ -227,7 +227,7 @@ ul.code-language-switcher {
 @media (max-width: $MQMobileNarrow) {
   .theme-container.split {
     .page {
-      ul.code-language-switcher {
+      & > ul.code-language-switcher {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
       }

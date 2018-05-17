@@ -124,14 +124,6 @@ function split(tokens) {
 
             let leftTokens = tokens.slice(leftContentStart, i);
             let rightTokens = tokens.slice(i + 1, rightContentEnd + 1);
-            codeBlocks(rightTokens, t => {
-                let language = t.info.replace(/{.*/, '')
-                return [
-                    block(`<code-block language="${language}">`, t.level),
-                    t,
-                    block('</code-block>', t.level)
-                ]
-            });
 
             let replaceTokens = [
                 openBlock('split'),
@@ -166,14 +158,14 @@ function codeToggles(tokens) {
                         let language = t.info.replace(/{.*/, '').trim()
                         languages.push(`'${language}'`);
                         return [
-                            block(`<div v-if="p.selectedLanguage === '${language}'">`, t.level),
+                            block(`<template slot="${language}">`, t.level),
                             t,
-                            block('</div>', t.level)
+                            block('</template>', t.level)
                         ]
                     });
 
-                    let openBlock = block('<code-toggle :languages="['+languages.join(',')+']">\n<template slot-scope="p">', tokens[i].level);
-                    let closeBlock = block('</template>\n</code-toggle>', tokens[j].level);
+                    let openBlock = block('<code-toggle :languages="['+languages.join(',')+']">', tokens[i].level);
+                    let closeBlock = block('</code-toggle>', tokens[j].level);
                     openBlock.nesting = tokens[i].nesting;
                     closeBlock.nesting = tokens[j].nesting;
 

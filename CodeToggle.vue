@@ -1,11 +1,13 @@
 <template>
     <div class="code-toggle">
-        <ul class="code-language-switcher">
+        <ul class="code-language-switcher" v-if="!usePageToggle">
             <li v-for="language in languages">
                 <a :class="{ active: language === selectedLanguage }" @click="setLanguage(language)">{{ $site.themeConfig.codeLanguages[language] }}</a>
             </li>
         </ul>
-        <slot :selectedLanguage="selectedLanguage"></slot>
+        <div v-for="language in languages">
+            <slot :name="language" v-if="language == (usePageToggle ? $root.codeLanguage : selectedLanguage)"/>
+        </div>
     </div>
 </template>
 
@@ -20,8 +22,8 @@
         },
 
         computed: {
-            isActive(language) {
-                return language === this.selectedLanguage
+            usePageToggle() {
+                return this.$page.frontmatter.split && this.$page.frontmatter.code
             }
         },
 
