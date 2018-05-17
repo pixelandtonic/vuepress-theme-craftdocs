@@ -36,19 +36,17 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for Craft CMS doc
 
 You can create code toggles by wrapping multiple fenced code blocks with a `code` container:
 
-```markdown
-::: code
-
-```php
-echo "Hey, $name";
-```
-
-``` twig
-Hey, {{ name }}
-```
-
-:::
-```
+    ::: code
+    
+    ```php
+    echo "Hey, $name";
+    ```
+    
+    ``` twig
+    Hey, {{ name }}
+    ```
+    
+    :::
 
 ## Split Views
 
