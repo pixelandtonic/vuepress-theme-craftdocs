@@ -19,14 +19,6 @@
             }
         },
 
-        beforeCreate() {
-            // let languages = [];
-            // this.$slots.default.forEach(n => {
-            //
-            // });
-            // debugger;
-        },
-
         computed: {
             isActive(language) {
                 return language === this.selectedLanguage
@@ -35,7 +27,6 @@
 
         methods: {
             setLanguage(language) {
-                console.log(language);
                 this.selectedLanguage = language
             }
         }
