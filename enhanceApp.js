@@ -1,13 +1,8 @@
-import { siteData } from '@temp/siteData'
 import Vuex from 'vuex'
 import CodeToggle from './CodeToggle'
 import CodeLanguageSwitcher from './CodeLanguageSwitcher'
 import outboundLink from './OutboundLink'
-
-function storagePrefix() {
-    let p = siteData.base.replace(/^\//, '').replace(/\/$/, '').replace(/\//g, '.');
-    return p ? p+'.' : '';
-}
+import { setStorage } from './Storage'
 
 export default ({ Vue, options, router, siteData }) => {
     Vue.component('code-toggle', CodeToggle)
@@ -27,26 +22,10 @@ export default ({ Vue, options, router, siteData }) => {
             },
             mutations: {
                 changeCodeLanguage(state, language) {
-                    if (typeof localStorage !== 'undefined') {
-                        localStorage[storagePrefix()+'codeLanguage'] = language;
-                    }
                     state.codeLanguage = language;
+                    setStorage('codeLanguage', language);
                 }
             }
-        }),
-
-        beforeMount() {
-            if (typeof this.$page.frontmatter.code !== 'undefined') {
-                if (
-                    typeof localStorage !== 'undefined' &&
-                    typeof localStorage[storagePrefix()+'codeLanguage'] !== 'undefined' &&
-                    this.$page.frontmatter.code.indexOf(localStorage[storagePrefix()+'codeLanguage']) !== -1
-                ) {
-                    this.$store.commit('changeCodeLanguage', localStorage[storagePrefix()+'codeLanguage'])
-                } else {
-                    this.$store.commit('changeCodeLanguage', this.$page.frontmatter.code[0])
-                }
-            }
-        }
+        })
     })
 }
