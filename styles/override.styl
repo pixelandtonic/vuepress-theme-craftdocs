@@ -23,7 +23,7 @@ toRgba(color)
     flex-flow: row wrap;
     padding: 1.25rem 1.5rem;
     line-height: 1.7;
-    background: $sidebarColor;
+    background: $blockColor;
     border-radius: 6px;
 
     dt, dd {
@@ -32,7 +32,7 @@ toRgba(color)
     }
 
     dt {
-      width: 8rem;
+      width: 9rem;
       padding-right: 1rem;
       box-sizing: border-box;
       display: flex;
@@ -42,16 +42,16 @@ toRgba(color)
     }
 
     dd {
-      width: calc(100% - 8rem);
+      width: calc(100% - 9rem);
     }
   }
 
   tr:nth-child(2n) {
-    background-color $sidebarColor
+    background-color $blockColor
   }
 
   code {
-    background toRgba($codeBgColor)
+    background toRgba($blockColor)
   }
 
   pre, pre[class*="language-"] {
@@ -59,7 +59,7 @@ toRgba(color)
   }
 
   .highlighted-line {
-    background-color darken($codeBgColor, 5%)
+    background-color darken($blockColor, 5%)
   }
 
   .code-toggle {
@@ -78,6 +78,17 @@ toRgba(color)
       }
     }
   }
+
+  a.outbound-link {
+    color: lighten($textColor, 25%);
+    margin-right: 0.25rem;
+  }
+
+  a + svg.outbound {
+    margin-left: 0.25rem;
+    position: relative;
+    top: 2px;
+  }
 }
 
 ul.code-language-switcher {
@@ -90,7 +101,7 @@ ul.code-language-switcher {
   font-size: 15px;
   line-height: 1.4;
   z-index: 2;
-  background: darken($codeBgColor, 5%);
+  background: darken($blockColor, 5%);
 
   li {
     margin: 0 5px 0 0;
@@ -144,7 +155,7 @@ ul.code-language-switcher {
         right: 0;
         bottom: 0;
         width: "calc(50% - %s)" % ($sidebarWidth / 2);
-        background: $codeBgColor;
+        background: $blockColor;
         content: '.';
         font-size: 0;
       }
@@ -176,6 +187,8 @@ ul.code-language-switcher {
                 margin-left: -2.5rem;
                 margin-right: -2.5rem;
                 padding: 0 2.5rem;
+                white-space: pre-wrap;
+                background-color: transparent;
 
                 &:before {
                   display: none;
