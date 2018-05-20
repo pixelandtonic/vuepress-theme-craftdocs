@@ -27,7 +27,10 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
         },
         markdown: {
             anchor: { level: [2, 3] },
-            config: require('vuepress-theme-craftdocs/markup')
+            config(md) {
+                let markup = require('vuepress-theme-craftdocs/markup')
+                md.use(markup)
+            }
         }
     }
     ```
