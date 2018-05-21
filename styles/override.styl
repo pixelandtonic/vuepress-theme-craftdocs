@@ -220,6 +220,10 @@ ul.code-language-switcher {
       h1, h2, h3, h4, h5, h6 {
         margin-top: (0.5rem - $navbarHeight - $navbarHeight);
         padding-top: ($navbarHeight + $navbarHeight + 1rem);
+        &:first-child {
+          margin-top: (0.5rem - $navbarHeight);
+          padding-top: ($navbarHeight + 1rem);
+        }
       }
     }
   }
