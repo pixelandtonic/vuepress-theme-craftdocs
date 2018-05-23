@@ -30,6 +30,7 @@ export default {
 }
 
 function renderLink (h, to, text, active) {
+  text = text.replace(/[_`]/g, '')
   return h('router-link', {
     props: {
       to,
