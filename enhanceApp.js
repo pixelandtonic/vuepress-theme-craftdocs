@@ -18,7 +18,7 @@ export default ({ Vue, options, router, siteData }) => {
                 const siteTitle = this.$siteTitle
                 const selfTitle = page.frontmatter.home ? null : (
                     page.frontmatter.title || // explicit title
-                    page.title // inferred title
+                    page.title.replace(/[_`]/g, '') // inferred title
                 )
                 return siteTitle
                     ? selfTitle
