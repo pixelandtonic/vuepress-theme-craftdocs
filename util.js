@@ -1,7 +1,7 @@
 export const hashRE = /#.*$/
 export const extRE = /\.(md|html)$/
 export const endingSlashRE = /\/$/
-export const outboundRE = /^(https?:|mailto:)/
+export const outboundRE = /^(https?:|mailto:|tel:)/
 
 export function normalize (path) {
   return path
@@ -22,6 +22,10 @@ export function isExternal (path) {
 
 export function isMailto (path) {
   return /^mailto:/.test(path)
+}
+
+export function isTel (path) {
+  return /^tel:/.test(path)
 }
 
 export function ensureExt (path) {
@@ -105,15 +109,16 @@ function resolvePath (relative, base, append) {
 }
 
 export function resolveSidebarItems (page, route, site, localePath) {
-  const pageSidebarConfig = page.frontmatter.sidebar
-  if (pageSidebarConfig === 'auto') {
-    return resolveHeaders(page)
-  }
   const { pages, themeConfig } = site
 
   const localeConfig = localePath && themeConfig.locales
     ? themeConfig.locales[localePath] || themeConfig
     : themeConfig
+
+  const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
+  if (pageSidebarConfig === 'auto') {
+    return resolveHeaders(page)
+  }
 
   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
   if (!sidebarConfig) {
