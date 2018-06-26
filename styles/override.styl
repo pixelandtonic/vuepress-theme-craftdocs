@@ -69,13 +69,16 @@ toRgba(color)
       border-radius: 6px 6px 0 0;
     }
 
-    pre, pre[class*="language-"] {
-      margin: 0;
+    div[class*="language-"] {
       border-radius: 0 0 6px 6px;
 
       &:before {
         display: none;
       }
+    }
+
+    pre, pre[class*="language-"] {
+      margin: 0;
     }
   }
 
@@ -302,11 +305,11 @@ div.table {
   }
 }
 
-pre[class="language-php"]:before {
+div[class="language-php"]:before {
   content: "php";
 }
 
-pre[class="language-twig"]:before {
+div[class="language-twig"]:before {
   content: "twig";
 }
 
