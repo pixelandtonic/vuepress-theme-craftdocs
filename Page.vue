@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <code-language-switcher v-if="$page.frontmatter.split && $page.frontmatter.code" />
+    <slot name="top"/>
     <Content :custom="false"/>
     <div class="page-edit">
       <div class="edit-link" v-if="editLink">
