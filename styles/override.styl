@@ -92,6 +92,24 @@ toRgba(color)
     position: relative;
     top: 2px;
   }
+
+  .custom-block {
+    div[class*="language-"] {
+      background: none;
+      border-radius: 0;
+      margin-left: -24px;
+      margin-right: -24px;
+
+      .highlight-lines {
+        padding-top: 0;
+      }
+
+      pre,
+      pre[class*="language-"] {
+        padding-top: 0;
+      }
+    }
+  }
 }
 
 ul.code-language-switcher {
