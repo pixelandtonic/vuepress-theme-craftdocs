@@ -77,8 +77,11 @@ toRgba(color)
       }
     }
 
-    pre, pre[class*="language-"] {
-      margin: 0;
+    & > div > div[class*="language-"] {
+      & > pre,
+      & > pre[class*="language-"] {
+        margin: 0;
+      }
     }
   }
 
@@ -107,6 +110,7 @@ toRgba(color)
       pre,
       pre[class*="language-"] {
         padding-top: 0;
+        padding-bottom: 0;
       }
     }
   }
