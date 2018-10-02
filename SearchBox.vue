@@ -4,21 +4,28 @@
       @input="query = $event.target.value"
       aria-label="Search"
       :value="query"
+      :class="{ 'focused': focused }"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
-      @keyup.down="onDown">
-    <ul class="suggestions"
+      @keyup.down="onDown"
+    >
+    <ul
+      class="suggestions"
       v-if="showSuggestions"
       :class="{ 'align-right': alignRight }"
-      @mouseleave="unfocus">
-      <li class="suggestion" v-for="(s, i) in suggestions"
+      @mouseleave="unfocus"
+    >
+      <li
+        class="suggestion"
+        v-for="(s, i) in suggestions"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"
-        @mouseenter="focus(i)">
+        @mouseenter="focus(i)"
+      >
         <a :href="s.path" @click.prevent>
           <span class="page-title">{{ s.title || s.path }}</span>
           <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
@@ -37,6 +44,7 @@ export default {
       focusIndex: 0
     }
   },
+
   computed: {
     showSuggestions () {
       return (
@@ -45,6 +53,7 @@ export default {
         this.suggestions.length
       )
     },
+
     suggestions () {
       const query = this.query.trim().toLowerCase()
       if (!query) {
@@ -83,6 +92,7 @@ export default {
       }
       return res
     },
+
     // make suggestions align right when there are not enough items
     alignRight () {
       const navCount = (this.$site.themeConfig.nav || []).length
@@ -90,6 +100,7 @@ export default {
       return navCount + repo <= 2
     }
   },
+
   methods: {
     getPageLocalePath (page) {
       for (const localePath in this.$site.locales || {}) {
@@ -99,6 +110,7 @@ export default {
       }
       return '/'
     },
+
     onUp () {
       if (this.showSuggestions) {
         if (this.focusIndex > 0) {
@@ -108,6 +120,7 @@ export default {
         }
       }
     },
+
     onDown () {
       if (this.showSuggestions) {
         if (this.focusIndex < this.suggestions.length - 1) {
@@ -117,6 +130,7 @@ export default {
         }
       }
     },
+
     go (i) {
       if (!this.showSuggestions) {
         return
@@ -125,9 +139,11 @@ export default {
       this.query = ''
       this.focusIndex = 0
     },
+
     focus (i) {
       this.focusIndex = i
     },
+
     unfocus () {
       this.focusIndex = -1
     }
@@ -141,7 +157,7 @@ export default {
 .search-box
   display inline-block
   position relative
-  margin-right 0.5rem
+  margin-right 1rem
   input
     cursor text
     width 10rem
@@ -176,6 +192,7 @@ export default {
     border-radius 4px
     cursor pointer
     a
+      white-space normal
       color lighten($textColor, 35%)
       .page-title
         font-weight 600
@@ -194,7 +211,6 @@ export default {
       width 0
       border-color transparent
       position relative
-      left 1rem
       &:focus
         cursor text
         left 0
@@ -208,6 +224,8 @@ export default {
 @media (max-width: $MQMobile)
   .search-box
     margin-right 0
+    input
+      left 1rem
     .suggestions
       right 0
 
