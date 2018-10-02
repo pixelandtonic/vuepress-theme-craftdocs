@@ -1,13 +1,11 @@
 import Vuex from 'vuex'
 import CodeToggle from './CodeToggle'
 import CodeLanguageSwitcher from './CodeLanguageSwitcher'
-import OutboundLink from './OutboundLink'
 import { setStorage } from './Storage'
 
 export default ({ Vue, options, router, siteData }) => {
     Vue.component('code-toggle', CodeToggle)
     Vue.component('code-language-switcher', CodeLanguageSwitcher)
-    Vue.component('outbound-link', OutboundLink)
 
     Vue.use(Vuex)
 
@@ -18,7 +16,7 @@ export default ({ Vue, options, router, siteData }) => {
                 const siteTitle = this.$siteTitle
                 const selfTitle = page.frontmatter.home ? null : (
                     page.frontmatter.title || // explicit title
-                    page.title.replace(/[_`]/g, '') // inferred title
+                    (page.title ? page.title.replace(/[_`]/g, '') : '') // inferred title
                 )
                 return siteTitle
                     ? selfTitle

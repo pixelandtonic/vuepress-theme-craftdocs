@@ -8,8 +8,8 @@
       <ul class="nav-dropdown" v-show="open">
         <li
         class="dropdown-item"
-        v-for="subItem in item.items"
-        :key="subItem.link">
+        v-for="(subItem, index) in item.items"
+        :key="subItem.link || index">
           <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
           <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
             <li
@@ -27,13 +27,12 @@
 </template>
 
 <script>
-import { isExternal, ensureExt } from './util'
 import NavLink from './NavLink.vue'
 import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   components: { NavLink, DropdownTransition },
-  data() {
+  data () {
     return {
       open: false
     }
@@ -44,7 +43,7 @@ export default {
     }
   },
   methods: {
-    toggle() {
+    toggle () {
       this.open = !this.open
     }
   }
@@ -78,7 +77,6 @@ export default {
           font-size 0.9em
       a
         display block
-        height 1.7rem
         line-height 1.7rem
         position relative
         border-bottom none
@@ -118,7 +116,6 @@ export default {
           padding-top 0
         h4, & > a
           font-size 15px
-          height 2rem
           line-height 2rem
         .dropdown-subitem
           font-size 14px
