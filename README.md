@@ -22,7 +22,7 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
             codeLanguages: {
                 php: 'PHP',
                 twig: 'Twig',
-                // any other languages you want to include in code toggles...
+                // any other code language labels you want to include in code toggles...
             }
         },
         markdown: {
@@ -39,17 +39,19 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
 
 You can create code toggles by wrapping multiple fenced code blocks with a `code` container:
 
-    ::: code
-    
-    ``` php
-    echo "Hey, $name";
-    ```
-    
-    ``` twig
-    Hey, {{ name }}
-    ```
-    
-    :::
+````vue
+::: code
+
+```php
+echo "Hey, $name";
+```
+
+```twig
+Hey, {{ name }}
+```
+
+:::
+````
 
 ## Split Views
 
