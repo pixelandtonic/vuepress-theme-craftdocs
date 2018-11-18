@@ -39,7 +39,7 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
 
 You can create code toggles by wrapping multiple fenced code blocks with a `code` container:
 
-````md
+````markdown
 ::: code
 
 ```php
