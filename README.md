@@ -53,25 +53,20 @@ Hey, {{ name }}
 :::
 ````
 
-You can also build the `CodeToggle` component manually if you need more control over it, such as toggling code blocks that are all the same language but need different labels:
+By default, toggle labels will be pulled from the value in `themeConfig.codeLanguages` that matches the code block’s language. If you want to provide a custom label instead, just type it after the code block language:
 
 ````markdown
-<code-toggle :languages="['craft2','craft3']" :labels="{craft2:'Craft 2',craft3:'Craft 3'}">
-<template slot="craft2">
+::: code
 
-```bash
+```php Craft 2
 $success = craft()->entries->saveEntry($entry);
 ```
 
-</template>
-<template slot="craft3">
-
-```bash
+```php Craft 3
 $success = Craft::$app->elements->saveElement($entry);
 ```
 
-</template>
-</code-toggle>
+:::
 ````
 
 ## Split Views

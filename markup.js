@@ -152,19 +152,36 @@ function codeToggles(tokens) {
             for (let j = i + 1; j < tokens.length; j++) {
                 if (tokens[j].type === 'container_code_close') {
                     let innerTokens = tokens.slice(i + 1, j)
-                    let languages = [];
+                    let slotNames = [];
+                    let labels = {};
 
-                    codeBlocks(innerTokens, t => {
-                        let language = t.info.replace(/{.*/, '').trim()
-                        languages.push(`'${language}'`);
+                    codeBlocks(innerTokens, (t, i) => {
+                        let slotName;
+
+                        // does the slot have a custom label?
+                        let labelMatch = t.info.match(/([^ ]) +(.*)/);
+                        if (labelMatch) {
+                            // give the slot a random slot name
+                            slotName = 'slot'+i;
+                            labels[slotName] = labelMatch[2];
+
+                            // remove the label from the code info
+                            t.info = t.info.replace(labelMatch[0], labelMatch[1]);
+                        } else {
+                            // set the slot name to the language (w/out line numbers)
+                            slotName = t.info.replace(/\{.*\}/, '').trim();
+                        }
+
+                        slotNames.push(slotName);
+
                         return [
-                            block(`<template slot="${language}">`, t.level),
+                            block(`<template slot="${slotName}">`, t.level),
                             t,
                             block('</template>', t.level)
                         ]
                     });
 
-                    let openBlock = block('<code-toggle :languages="['+languages.join(',')+']">', tokens[i].level);
+                    let openBlock = block(`<code-toggle :languages='${JSON.stringify(slotNames)}' :labels='${JSON.stringify(labels)}'>`, tokens[i].level);
                     let closeBlock = block('</code-toggle>', tokens[j].level);
                     openBlock.nesting = tokens[i].nesting;
                     closeBlock.nesting = tokens[j].nesting;
@@ -191,7 +208,7 @@ function codeBlocks(tokens, replace) {
     for (let i = 0; i < tokens.length; i++) {
         let t = tokens[i]
         if (t.type === 'fence' && t.info) {
-            let replaceTokens = replace(t)
+            let replaceTokens = replace(t, i)
             tokens.splice(i, 1, ...replaceTokens)
 
             // skip ahead
