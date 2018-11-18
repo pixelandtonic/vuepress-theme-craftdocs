@@ -2,7 +2,7 @@
     <div class="code-toggle">
         <ul class="code-language-switcher" v-if="!usePageToggle">
             <li v-for="language in languages">
-                <a :class="{ active: language === selectedLanguage }" @click="setLanguage(language)">{{ $site.themeConfig.codeLanguages[language] }}</a>
+                <a :class="{ active: language === selectedLanguage }" @click="setLanguage(language)">{{ (labels && labels[language]) || ($site.themeConfig.codeLanguages && $site.themeConfig.codeLanguages[language]) || language }}</a>
             </li>
         </ul>
         <div v-for="language in languages">
@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        props: ['languages'],
+        props: ['languages', 'labels'],
 
         data() {
             return {

@@ -53,6 +53,27 @@ Hey, {{ name }}
 :::
 ````
 
+You can also build the `CodeToggle` component manually if you need more control over it, such as toggling code blocks that are all the same language but need different labels:
+
+````markdown
+<code-toggle :languages="['craft2','craft3']" :labels="{craft2:'Craft 2',craft3:'Craft 3'}">
+<template slot="craft2">
+
+```bash
+$success = craft()->entries->saveEntry($entry);
+```
+
+</template>
+<template slot="craft3">
+
+```bash
+$success = Craft::$app->elements->saveElement($entry);
+```
+
+</template>
+</code-toggle>
+````
+
 ## Split Views
 
 You can create split view pages by adding `split: true` to your page’s frontmatter:
