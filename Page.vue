@@ -59,6 +59,7 @@
     </div>
 
     <slot name="bottom"/>
+    <div id="happy-thumbs"></div>
   </div>
 </template>
 
@@ -67,6 +68,12 @@ import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
   props: ['sidebarItems'],
+
+  mounted() {
+    const thumbsSrc = document.createElement('script')
+    thumbsSrc.setAttribute('src', 'https://exprmnt.s3.us-west-1.amazonaws.com/happy-thumbs.js')
+    document.head.appendChild(thumbsSrc);
+  },
 
   computed: {
     lastUpdated () {
