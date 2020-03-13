@@ -59,20 +59,22 @@
     </div>
 
     <slot name="bottom"/>
-    <div id="happy-thumbs"></div>
+    <votes :frontmatter="this.$page.frontmatter" ref="votes"></votes>
   </div>
 </template>
 
 <script>
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+import Votes from './Votes'
 
 export default {
   props: ['sidebarItems'],
+  components: {
+    Votes
+  },
 
-  mounted() {
-    const thumbsSrc = document.createElement('script')
-    thumbsSrc.setAttribute('src', 'https://exprmnt.s3.us-west-1.amazonaws.com/happy-thumbs.js')
-    document.head.appendChild(thumbsSrc);
+  updated() {
+    this.$refs.votes.resetVote();
   },
 
   computed: {
@@ -172,7 +174,7 @@ export default {
         (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
         path
       )
-    }
+    },
   }
 }
 

@@ -103,3 +103,13 @@ code:
 ```
 
 (Use the same language handles defined by `themeConfig.codeLanguages` in `.vuepress/config.js`.)
+
+## Helpful Vote Widget
+
+A “Was this helpful?” widget will be rendered at the bottom of each page, logging votes as Google Analytics events. To disable this, use the `votes` setting in your page’s frontmatter:
+
+```yaml
+---
+votes: false
+---
+```
