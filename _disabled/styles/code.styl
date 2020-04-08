@@ -1,4 +1,6 @@
-{$contentClass}
+@require './config'
+
+.content
   code
     color lighten($textColor, 20%)
     padding 0.25rem 0.5rem
@@ -6,13 +8,8 @@
     font-size 0.85em
     background-color rgba(27,31,35,0.05)
     border-radius 3px
-    .token
-      &.deleted
-        color #EC5975
-      &.inserted
-        color $accentColor
 
-{$contentClass}
+.content
   pre, pre[class*="language-"]
     line-height 1.4
     padding 1.25rem 1.5rem
@@ -21,7 +18,7 @@
     border-radius 6px
     overflow auto
     code
-      color #fff
+      //color #fff
       padding 0
       background-color transparent
       border-radius 0
@@ -39,7 +36,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color rgba(0, 0, 0, 66%)
+      background-color darken($codeBgColor, 5%)
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -130,8 +127,3 @@ div[class~="language-python"]:before
 
 div[class~="language-bash"]:before
   content "sh"
-
-div[class~="language-php"]:before
-  content "php"
-
-@import '~prismjs/themes/prism-tomorrow.css'

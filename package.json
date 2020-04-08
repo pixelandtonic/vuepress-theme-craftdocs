@@ -8,6 +8,8 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "markdown-it": "^10.0.0",
+    "markdown-it-container": "^2.0.0",
     "vuex": "^3.0.1"
   }
 }
