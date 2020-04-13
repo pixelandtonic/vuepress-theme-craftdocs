@@ -42,7 +42,7 @@ body
 
 .sidebar
   font-size 16px
-  background-color #fff
+  background-color $sidebarColor
   width $sidebarWidth
   position fixed
   z-index 10
@@ -88,10 +88,11 @@ p a code
 
 kbd
   background #eee
-  border solid 0.15rem #ddd
-  border-bottom solid 0.25rem #ddd
+  border solid 1px #ddd
+  border-bottom solid 3px #ddd
   border-radius 0.15rem
-  padding 0 0.15em
+  padding 0.15em 0.325em
+  font-size 0.85em
 
 blockquote
   font-size 1rem
@@ -199,3 +200,4 @@ th, td
       padding-left 0
 
 @require 'mobile.styl'
+

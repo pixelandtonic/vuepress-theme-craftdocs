@@ -8,73 +8,83 @@
       id="algolia-search-input"
       class="search-query"
       :placeholder="placeholder"
-    >
+    />
   </form>
 </template>
 
 <script>
 export default {
-  name: 'AlgoliaSearchBox',
+  name: "AlgoliaSearchBox",
 
-  props: ['options'],
+  props: ["options"],
 
-  data () {
+  data() {
     return {
-      placeholder: undefined
-    }
+      placeholder: undefined,
+    };
   },
 
   watch: {
-    $lang (newValue) {
-      this.update(this.options, newValue)
+    $lang(newValue) {
+      this.update(this.options, newValue);
     },
 
-    options (newValue) {
-      this.update(newValue, this.$lang)
-    }
+    options(newValue) {
+      this.update(newValue, this.$lang);
+    },
   },
 
-  mounted () {
-    this.initialize(this.options, this.$lang)
-    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+  mounted() {
+    this.initialize(this.options, this.$lang);
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || "";
   },
 
   methods: {
-    initialize (userOptions, lang) {
+    initialize(userOptions, lang) {
       Promise.all([
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
+        import(
+          /* webpackChunkName: "docsearch" */ "docsearch.js/dist/cdn/docsearch.min.js"
+        ),
+        import(
+          /* webpackChunkName: "docsearch" */ "docsearch.js/dist/cdn/docsearch.min.css"
+        ),
       ]).then(([docsearch]) => {
-        docsearch = docsearch.default
-        const { algoliaOptions = {}} = userOptions
-        docsearch(Object.assign(
-          {},
-          userOptions,
-          {
-            inputSelector: '#algolia-search-input',
+        docsearch = docsearch.default;
+        const { algoliaOptions = {} } = userOptions;
+        docsearch(
+          Object.assign({}, userOptions, {
+            inputSelector: "#algolia-search-input",
             // #697 Make docsearch work well at i18n mode.
-            algoliaOptions: Object.assign({
-              'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
-            }, algoliaOptions),
+            algoliaOptions: Object.assign(
+              {
+                facetFilters: [`lang:${lang}`].concat(
+                  algoliaOptions.facetFilters || []
+                ),
+              },
+              algoliaOptions
+            ),
             handleSelected: (input, event, suggestion) => {
-              const { pathname, hash } = new URL(suggestion.url)
-              const routepath = pathname.replace(this.$site.base, '/')
-              this.$router.push(`${routepath}${hash}`)
-            }
-          }
-        ))
-      })
+              const { pathname, hash } = new URL(suggestion.url);
+              const routepath = pathname.replace(this.$site.base, "/");
+              this.$router.push(`${routepath}${hash}`);
+            },
+          })
+        );
+      });
     },
 
-    update (options, lang) {
-      this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
-      this.initialize(options, lang)
-    }
-  }
-}
+    update(options, lang) {
+      this.$el.innerHTML =
+        '<input id="algolia-search-input" class="search-query">';
+      this.initialize(options, lang);
+    },
+  },
+};
 </script>
 
 <style lang="stylus">
+@require '../styles/config.styl'
+
 .algolia-search-wrapper
   & > span
     vertical-align middle
@@ -166,5 +176,4 @@ export default {
       width 5px
       margin -3px 3px 0
       vertical-align middle
-
 </style>

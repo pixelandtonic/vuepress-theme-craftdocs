@@ -111,6 +111,8 @@ export default {
 </script>
 
 <style lang="stylus">
+@require '../styles/config.styl'
+
 .dropdown-wrapper
   cursor pointer
   .dropdown-title

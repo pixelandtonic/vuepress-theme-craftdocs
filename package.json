@@ -10,6 +10,11 @@
   "dependencies": {
     "markdown-it": "^10.0.0",
     "markdown-it-container": "^2.0.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@storybook/vue": "^5.3.18",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
   }
 }

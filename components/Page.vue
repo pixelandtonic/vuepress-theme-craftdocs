@@ -1,5 +1,6 @@
 <template>
   <main class="page">
+    <code-language-switcher v-if="$page.frontmatter.split && $page.frontmatter.code" />
     <slot name="top" />
 
     <Content class="theme-default-content" />

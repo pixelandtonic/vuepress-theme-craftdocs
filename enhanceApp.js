@@ -1,6 +1,6 @@
 import Vuex from "vuex";
-import CodeToggle from "./CodeToggle";
-import CodeLanguageSwitcher from "./CodeLanguageSwitcher";
+import CodeToggle from "./components/CodeToggle";
+import CodeLanguageSwitcher from "./components/CodeLanguageSwitcher";
 import { setStorage } from "./Storage";
 
 export default ({ Vue, options, router, siteData }) => {

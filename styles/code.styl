@@ -21,7 +21,7 @@
     border-radius 6px
     overflow auto
     code
-      color #fff
+      color inherit
       padding 0
       background-color transparent
       border-radius 0
@@ -39,7 +39,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color rgba(0, 0, 0, 66%)
+      background-color darken($codeBgColor, 5%)
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -134,4 +134,4 @@ div[class~="language-bash"]:before
 div[class~="language-php"]:before
   content "php"
 
-@import '~prismjs/themes/prism-tomorrow.css'
+@import '~prismjs/themes/prism-solarizedlight.css'
