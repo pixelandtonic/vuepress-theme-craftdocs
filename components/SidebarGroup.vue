@@ -55,7 +55,7 @@
 
 <script>
 import { isActive } from '../util'
-import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import DropdownTransition from '@parent-theme/components/DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
@@ -73,7 +73,7 @@ export default {
 
   // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
   beforeCreate () {
-    this.$options.components.SidebarLinks = require('@theme/components/SidebarLinks.vue').default
+    this.$options.components.SidebarLinks = require('@parent-theme/components/SidebarLinks.vue').default
   },
 
   methods: { isActive }
