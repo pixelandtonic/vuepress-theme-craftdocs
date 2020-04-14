@@ -1,7 +1,7 @@
 <template>
   <div class="code-toggle">
     <ul class="code-language-switcher" v-if="!usePageToggle">
-      <li v-for="language in languages">
+      <li v-for="(language, index) in languages" :key="index">
         <a
           :class="{ active: language === selectedLanguage }"
           @click="setLanguage(language)"

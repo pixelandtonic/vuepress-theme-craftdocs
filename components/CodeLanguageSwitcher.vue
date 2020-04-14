@@ -1,6 +1,6 @@
 <template>
   <ul class="code-language-switcher">
-    <li v-for="language in $page.frontmatter.code">
+    <li v-for="(language, index) in $page.frontmatter.code" :key="index">
       <a
         :class="{ active: $store.state.codeLanguage === language }"
         @click="$store.commit('changeCodeLanguage', language)"
