@@ -25,9 +25,9 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
                 // any other code language labels you want to include in code toggles...
             }
         },
-        extendMarkdown: {
+        markdown: {
             anchor: { level: [2, 3] },
-            config(md) {
+            extendMarkdown(md) {
                 let markup = require('vuepress-theme-craftdocs/markup')
                 md.use(markup)
             }
