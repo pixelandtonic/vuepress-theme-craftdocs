@@ -25,7 +25,7 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
                 // any other code language labels you want to include in code toggles...
             }
         },
-        markdown: {
+        extendMarkdown: {
             anchor: { level: [2, 3] },
             config(md) {
                 let markup = require('vuepress-theme-craftdocs/markup')
@@ -103,3 +103,7 @@ code:
 ```
 
 (Use the same language handles defined by `themeConfig.codeLanguages` in `.vuepress/config.js`.)
+
+## Storybook
+
+After running `npm install`, use `npm run storybook` to start Storybook for interactive custom component documentation.
