@@ -29,8 +29,6 @@ function vPres(tokens) {
             continue;
         }
 
-
-
         let openIdx = findPrev(tokens, i, t => t.level === 0)
         let closeIdx = findNext(tokens, i, t => t.level === 0)
         if (

@@ -2,6 +2,12 @@
 
 This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS documentation](https://docs.craftcms.com/).
 
+It makes the following changes over the default VuePress theme:
+
+- Adds support for [code language toggles](#code-toggles) and [split page views](#split-views).
+- Disables [interpolation](https://vuepress.vuejs.org/guide/using-vue.html#interpolation) by wrapping all page content in a big `v-pre` block.
+- Improves `<table>` styling.
+
 ## Setup
 
 1. [Install](https://vuepress.vuejs.org/guide/getting-started.html) VuePress like normal
