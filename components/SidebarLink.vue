@@ -60,7 +60,7 @@ export default {
 };
 
 function renderLink(h, to, text, active, level) {
-  text = text.replace(/[_`]/g, '')
+  text = text.replace(/[_`]/g, "");
   const component = {
     props: {
       to,
@@ -116,8 +116,6 @@ function renderExternal(h, to, text) {
 </script>
 
 <style lang="stylus">
-@require '../styles/config.styl'
-
 .sidebar .sidebar-sub-headers
   padding-left 1rem
   font-size 0.95em

@@ -1,9 +1,4 @@
-@require './config'
-@require './code'
-@require './custom-blocks'
-@require './arrow'
-@require './wrapper'
-@require './toc'
+@require '~@theme/styles/code.styl'
 
 html, body
   padding 0
@@ -42,7 +37,7 @@ body
 
 .sidebar
   font-size 16px
-  background-color $sidebarColor
+  background-color #fbfcfd
   width $sidebarWidth
   position fixed
   z-index 10
@@ -199,5 +194,54 @@ th, td
     .page
       padding-left 0
 
-@require 'mobile.styl'
+.theme-container {
+  .algolia-search-wrapper {
+    .algolia-autocomplete {
+      .ds-dropdown-menu {
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.3);
+
+        &:before {
+          border-top: 1px solid transparent;
+          border-right: 1px solid transparent;
+        }
+      }
+
+      .algolia-docsearch-suggestion {
+        .algolia-docsearch-suggestion--category-header {
+          background: transparent;
+          padding: 5px 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .algolia-docsearch-suggestion--subcategory-column {
+          background: transparent;
+          background: none;
+        }
+
+        .algolia-docsearch-suggestion--category-header {
+          color: inherit;
+          background: transparent;
+        }
+      }
+
+      .algolia-docsearch-suggestion--highlight {
+        color: $accentColor;
+      }
+    }
+  }
+}
+
+.algolia-autocomplete {
+  .algolia-docsearch-suggestion--text {
+    .algolia-docsearch-suggestion--highlight {
+      box-shadow: none;
+    }
+  }
+}
+
+@require '~@theme/styles/mobile.styl'
+@require '~@theme/styles/override.styl'
 

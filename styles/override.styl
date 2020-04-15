@@ -11,7 +11,6 @@ toRgba(color)
   bA = (b - min) / a
   "rgba(%s, %s, %s, %s)" % (rA gA bA a)
 
-
 {$contentClass} {
   dl {
     display: flex;
@@ -319,50 +318,6 @@ div.table {
       &:last-child {
         border-right: none;
       }
-    }
-  }
-}
-
-div[class="language-php"]:before {
-  content: "php";
-}
-
-div[class="language-twig"]:before {
-  content: "twig";
-}
-
-.algolia-search-wrapper {
-  .algolia-autocomplete {
-    .ds-dropdown-menu {
-      padding: 0.7rem;
-    }
-
-    .algolia-docsearch-suggestion {
-      .algolia-docsearch-suggestion--category-header {
-        padding: 5px 0;
-        margin-bottom: 0.5rem;
-      }
-
-      .algolia-docsearch-suggestion--subcategory-column {
-        background: none;
-      }
-
-      .algolia-docsearch-suggestion--category-header {
-        color: inherit;
-        background: none;
-      }
-    }
-
-    .algolia-docsearch-suggestion--highlight {
-      color: $accentColor;
-    }
-  }
-}
-
-.algolia-autocomplete {
-  .algolia-docsearch-suggestion--text {
-    .algolia-docsearch-suggestion--highlight {
-      box-shadow: none;
     }
   }
 }
