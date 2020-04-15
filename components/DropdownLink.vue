@@ -126,6 +126,7 @@ export default {
     border none
     font-weight 500
     color $textColor
+    pointer-events none
     &:hover
       border-color transparent
     .arrow
