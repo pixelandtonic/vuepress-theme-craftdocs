@@ -8,7 +8,7 @@ This is the [VuePress](https://vuepress.vuejs.org/) theme used for [Craft CMS do
 2. Require this theme
 
     ```
-    yarn add -D vuepress-theme-craftdocs
+    yarn add -D vuepress-theme-craftdocs # or npm install -D vuepress-theme-craftdocs
     ```
 
 3. Set these things in `.vuepress/config.js`:
