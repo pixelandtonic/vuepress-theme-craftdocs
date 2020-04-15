@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-craftdocs",
-  "version": "1.3.6",
+  "version": "2.0.0",
   "description": "vuepress-theme",
   "main": "index.js",
   "repository": "https://github.com/pixelandtonic/vuepress-theme-craftdocs",
