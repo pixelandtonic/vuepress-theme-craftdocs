@@ -108,7 +108,7 @@ code:
 
 After running `npm install`, use `npm run storybook` to start Storybook for interactive custom component documentation.
 
-## Updating from v1.3.x
+## Upgrading from v1.3.x
 
 1. Follow the VuePress [Migration from 0.x](https://vuepress.vuejs.org/miscellaneous/migration-guide.html) guide.
 2. Update any custom styles that relied on `.content` to reference `.theme-default-content` instead.
