@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Changed
+- Updated with [1.4.1](https://github.com/vuejs/vuepress/tree/v1.4.1/packages/@vuepress/theme-default) release.
+
 ## [2.0.0] - 2020-04-15
 ### Added
 - Started a changelog 😎.
