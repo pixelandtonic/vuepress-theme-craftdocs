@@ -12,3 +12,6 @@
 - Theme extends `@parent-theme` where possible to reduce duplicate code.
 - Restored code block language hints.
 - Refined appearance of `<kbd>` elements.
+
+### Fixed
+- Fixed `CodeSwitcher` appearance < 419px.
