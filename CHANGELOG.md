@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0] - 2017-06-20
+## [2.0.0] - 2020-04-15
 ### Added
 - Started a changelog 😎.
 - Added initial Storybook documentation for custom components.
