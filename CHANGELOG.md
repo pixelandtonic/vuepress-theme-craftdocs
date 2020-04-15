@@ -5,7 +5,7 @@
 - Started a changelog 😎.
 - Added initial Storybook documentation for custom components.
 - Added `BrowserShot` and `MetaDetails` components.
-- Added [`medium-zoom plugin](https://vuepress.github.io/en/plugins/medium-zoom/).
+- Added [medium-zoom plugin](https://vuepress.github.io/en/plugins/medium-zoom/).
 
 ### Changed
 - Updated theme for VuePress ^1.4.0, with customizations applied to [1.4.1 default](https://github.com/vuejs/vuepress/tree/v1.4.1/packages/@vuepress/theme-default).
