@@ -18,7 +18,7 @@ export default {
     if (
       this.$page.frontmatter.code.indexOf(this.$store.state.codeLanguage) === -1
     ) {
-      let storageValue = getStorage("codeLanguage");
+      let storageValue = getStorage("codeLanguage", $this.siteData.base);
 
       if (
         typeof storageValue !== "undefined" &&

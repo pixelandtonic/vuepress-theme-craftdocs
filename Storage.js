@@ -1,29 +1,29 @@
-// import { siteData } from "@temp/siteData";
+const storagePrefix = function (base) {
+  let p = base
+    .replace(/^\//, "")
+    .replace(/\/$/, "")
+    .replace(/\//g, ".");
+  return p ? p + "." : "";
+};
 
-// const storagePrefix = function () {
-//   let p = siteData.base
-//     .replace(/^\//, "")
-//     .replace(/\/$/, "")
-//     .replace(/\//g, ".");
-//   return p ? p + "." : "";
-// };
+const setStorage = function (name, value, base) {
+  console.log(`setStorage(${base})`);
+  if (typeof localStorage === "undefined") {
+    return;
+  }
+  localStorage[storagePrefix(base) + name] = value;
+};
 
-// const setStorage = function (name, value) {
-//   if (typeof localStorage === "undefined") {
-//     return;
-//   }
-//   localStorage[storagePrefix() + name] = value;
-// };
+const getStorage = function (name, base) {
+  console.log(`getStorage(${base})`);
+  if (typeof localStorage === "undefined") {
+    return;
+  }
+  name = storagePrefix(base) + name;
+  if (typeof localStorage[name] === "undefined") {
+    return;
+  }
+  return localStorage[name];
+};
 
-// const getStorage = function (name) {
-//   if (typeof localStorage === "undefined") {
-//     return;
-//   }
-//   name = storagePrefix() + name;
-//   if (typeof localStorage[name] === "undefined") {
-//     return;
-//   }
-//   return localStorage[name];
-// };
-
-// export { storagePrefix, getStorage, setStorage };
+export { storagePrefix, getStorage, setStorage };

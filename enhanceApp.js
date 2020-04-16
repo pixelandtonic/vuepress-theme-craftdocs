@@ -4,6 +4,8 @@ import CodeLanguageSwitcher from "./components/CodeLanguageSwitcher";
 import { setStorage } from "./Storage";
 
 export default ({ Vue, options, router, siteData }) => {
+  const base = siteData.base;
+
   Vue.component("code-toggle", CodeToggle);
   Vue.component("code-language-switcher", CodeLanguageSwitcher);
 
@@ -39,7 +41,7 @@ export default ({ Vue, options, router, siteData }) => {
       mutations: {
         changeCodeLanguage(state, language) {
           state.codeLanguage = language;
-          setStorage("codeLanguage", language);
+          setStorage("codeLanguage", language, base);
         },
       },
     }),
