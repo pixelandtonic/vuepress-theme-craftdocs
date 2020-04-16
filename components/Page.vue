@@ -1,6 +1,9 @@
 <template>
   <main class="page">
-    <code-language-switcher v-if="$page.frontmatter.split && $page.frontmatter.code" />
+    <!-- almost identical to theme default except for adding this language switcher -->
+    <code-language-switcher
+      v-if="$page.frontmatter.split && $page.frontmatter.code"
+    />
     <slot name="top" />
 
     <Content class="theme-default-content" />
@@ -13,13 +16,14 @@
 </template>
 
 <script>
-import PageEdit from '@parent-theme/components/PageEdit.vue'
-import PageNav from '@parent-theme/components/PageNav.vue'
+import PageEdit from "@parent-theme/components/PageEdit.vue";
+import PageNav from "@parent-theme/components/PageNav.vue";
+import CodeLanguageSwitcher from "@theme/components/CodeLanguageSwitcher.vue";
 
 export default {
   components: { PageEdit, PageNav },
-  props: ['sidebarItems']
-}
+  props: ["sidebarItems"],
+};
 </script>
 
 <style lang="stylus">
@@ -28,5 +32,4 @@ export default {
 .page
   padding-bottom 2rem
   display block
-
 </style>
