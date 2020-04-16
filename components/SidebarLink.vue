@@ -60,6 +60,7 @@ export default {
 };
 
 function renderLink(h, to, text, active, level) {
+  // following line is the only customization to this component
   text = text.replace(/[_`]/g, "");
   const component = {
     props: {

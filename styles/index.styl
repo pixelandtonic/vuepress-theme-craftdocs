@@ -37,6 +37,7 @@ body
 
 .sidebar
   font-size 16px
+  // manually set the sidebar’s background color
   background-color #fbfcfd
   width $sidebarWidth
   position fixed
@@ -194,6 +195,8 @@ th, td
     .page
       padding-left 0
 
+// makes Algolia autosuggest dropdown look a bit more at home
+// see https://github.com/algolia/docsearch/blob/master/src/styles/_dropdown.scss
 .theme-container {
   .algolia-search-wrapper {
     .algolia-autocomplete {
@@ -239,6 +242,13 @@ th, td
     .algolia-docsearch-suggestion--highlight {
       box-shadow: none;
     }
+  }
+}
+
+// softens inactive clickable sidebar headings
+.theme-container {
+  .sidebar-heading {
+    color: #999;
   }
 }
 
