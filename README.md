@@ -75,10 +75,6 @@ $success = Craft::$app->elements->saveElement($entry);
 :::
 ````
 
-## Storybook
-
-After running `npm install`, use `npm run storybook` to start Storybook for interactive custom component documentation.
-
 ## Upgrading from v1.3.x
 
 1. Follow the VuePress [Migration from 0.x](https://vuepress.vuejs.org/miscellaneous/migration-guide.html) guide.
