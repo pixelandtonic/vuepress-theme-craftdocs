@@ -1,0 +1,132 @@
+.theme-container.split {
+  .page {
+    & > ul.code-language-switcher {
+      position: fixed;
+      top: $navbarHeight;
+      padding: 0.7rem 2.5rem;
+    }
+  }
+}
+
+@media (min-width: $MQNarrow + 1) {
+  .theme-container.split {
+    .page {
+      position: relative;
+      width: "calc(50% - %s)" % ($sidebarWidth / 2);
+
+      &:after {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: "calc(50% - %s)" % ($sidebarWidth / 2);
+        background: $blockColor;
+        content: '.';
+        font-size: 0;
+      }
+
+      & > ul.code-language-switcher {
+        right: 0;
+        width: "calc(50% - %s)" % ($sidebarWidth / 2);
+      }
+
+      {$contentClass} {
+        margin-right: 0;
+
+        .split {
+          margin: 0 -2.5rem;
+          width: calc(200% + 10rem);
+          display: flex;
+          flex-direction: row;
+
+          & > div {
+            z-index: 1;
+            width: 50%;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            box-sizing: border-box;
+
+            &.right {
+              pre,
+              pre[class*="language-"] {
+                margin-left: -2.5rem;
+                margin-right: -2.5rem;
+                padding: 0 2.5rem;
+                white-space: pre-wrap;
+                background-color: transparent;
+
+                &:before {
+                  display: none;
+                }
+
+                .highlighted-line {
+                  margin: 0 -2.5rem;
+                  padding: 0 2.5rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// narrow desktop / iPad
+@media (max-width: $MQNarrow) {
+  .theme-container.split {
+    .page {
+      & > ul.code-language-switcher {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: "calc(100% - %s)" % ($sidebarWidth * 0.82);
+      }
+
+      {$contentClass} {
+        & > *:first-child {
+          margin-top: $navbarHeight * 2;
+        }
+
+        & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+          &:first-child {
+            padding-top: 0;
+          }
+        }
+      }
+
+      pre, pre[class*="language-"] {
+        margin: 1em 0;
+        border-radius: 6px;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: (0.5rem - $navbarHeight - $navbarHeight);
+        padding-top: ($navbarHeight + $navbarHeight + 1rem);
+      }
+    }
+  }
+}
+
+// wide mobile
+@media (max-width: $MQMobile) {
+  .theme-container.split {
+    .page {
+      & > ul.code-language-switcher {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// narrow mobile
+@media (max-width: $MQMobileNarrow) {
+  .theme-container.split {
+    .page {
+      & > ul.code-language-switcher {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+  }
+}

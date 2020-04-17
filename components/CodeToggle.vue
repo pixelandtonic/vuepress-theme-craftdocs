@@ -5,8 +5,7 @@
         <a
           :class="{ active: language === selectedLanguage }"
           @click="setLanguage(language)"
-          >{{ getLanguageLabel(language) }}</a
-        >
+        >{{ getLanguageLabel(language) }}</a>
       </li>
     </ul>
     <div v-for="(language, index) in languages" :key="index">
@@ -19,7 +18,7 @@
 .code-toggle {
   margin: 0.85rem 0;
 
-  div[class*="language-"] {
+  div[class*='language-'] {
     border-radius: 0 0 6px 6px;
 
     &:before {
@@ -27,9 +26,8 @@
     }
   }
 
-  & > div > div[class*="language-"] {
-    & > pre,
-    & > pre[class*="language-"] {
+  & > div > div[class*='language-'] {
+    & > pre, & > pre[class*='language-'] {
       margin: 0;
     }
   }
@@ -59,13 +57,13 @@ ul.code-language-switcher {
       line-height: 2.2rem;
       cursor: pointer;
       border-radius: 4px;
-      color lighten($textColor, 20%)
+      color: lighten($textColor, 20%);
 
       &:hover {
         text-decoration: none !important;
 
         &:not(.active) {
-          background: rgba(255,255,255,0.5);
+          background: rgba(255, 255, 255, 0.5);
         }
       }
 
@@ -84,7 +82,7 @@ export default {
 
   data() {
     return {
-      selectedLanguage: this.languages[0],
+      selectedLanguage: this.languages[0]
     };
   },
 
@@ -95,7 +93,7 @@ export default {
       }
 
       return this.$page.frontmatter.split && this.$page.frontmatter.code;
-    },
+    }
   },
 
   methods: {
@@ -125,7 +123,7 @@ export default {
           ? this.$store.state.codeLanguage
           : this.selectedLanguage)
       );
-    },
-  },
+    }
+  }
 };
 </script>

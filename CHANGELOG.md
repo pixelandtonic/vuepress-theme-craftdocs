@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Added
+- Brought back support for split views. [#13](https://github.com/pixelandtonic/vuepress-theme-craftdocs/issues/13)
+
 ## [2.0.0] - 2020-04-15
 ### Added
 - Started a changelog 😎.
