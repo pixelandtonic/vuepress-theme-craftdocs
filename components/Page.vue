@@ -1,7 +1,7 @@
 <template>
   <main class="page">
-    <!-- almost identical to theme default except for adding this language switcher -->
-    <code-language-switcher
+    <!-- CodeLanguageSwitcher is the only addition to the default Page component -->
+    <CodeLanguageSwitcher
       v-if="$page.frontmatter.split && $page.frontmatter.code"
     />
     <slot name="top" />
@@ -18,10 +18,10 @@
 <script>
 import PageEdit from "@parent-theme/components/PageEdit.vue";
 import PageNav from "@parent-theme/components/PageNav.vue";
-//import CodeLanguageSwitcher from "./CodeLanguageSwitcher.vue";
+import CodeLanguageSwitcher from "./CodeLanguageSwitcher.vue";
 
 export default {
-  components: { PageEdit, PageNav },
+  components: { PageEdit, PageNav, CodeLanguageSwitcher },
   props: ["sidebarItems"],
 };
 </script>
