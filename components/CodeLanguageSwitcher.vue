@@ -1,5 +1,5 @@
 <template>
-  <ul class="code-language-switcher">
+  <ul class="code-language-switcher split">
     <li v-for="(language, index) in $page.frontmatter.code" :key="index">
       <a
         :class="{ active: $store.state.codeLanguage === language }"
@@ -11,7 +11,7 @@
 </template>
 
 <style lang="stylus">
-.code-language-switcher
+.code-language-switcher.split
     border-radius 0
 </style>
 
