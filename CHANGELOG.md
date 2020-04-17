@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [2.0.2] - 2020-04-17
 ### Fixed
 - Fixed expandable sidebar heading’s active/expanded color.
 
