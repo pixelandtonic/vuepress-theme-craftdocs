@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Fixed
+- Fixed expandable sidebar heading’s active/expanded color.
+
 ## [2.0.1] - 2020-04-17
 ### Added
 - Brought back support for split views. [#13](https://github.com/pixelandtonic/vuepress-theme-craftdocs/issues/13)

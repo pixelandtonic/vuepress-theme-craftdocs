@@ -4,6 +4,13 @@
 .sidebar
   background-color #fbfcfd
 
+// softens inactive clickable sidebar headings
+.theme-container {
+  .sidebar-heading:not(.open):not(:hover) {
+    color: #999;
+  }
+}
+
 // refine clunky `kbd` default
 kbd
   border solid 1px #ddd
@@ -58,13 +65,6 @@ kbd
     .algolia-docsearch-suggestion--highlight {
       box-shadow: none;
     }
-  }
-}
-
-// softens inactive clickable sidebar headings
-.theme-container {
-  .sidebar-heading {
-    color: #999;
   }
 }
 
