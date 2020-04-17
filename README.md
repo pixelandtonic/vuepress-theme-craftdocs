@@ -73,7 +73,43 @@ $success = Craft::$app->elements->saveElement($entry);
 ```
 
 :::
+
 ````
+## Split Views
+
+You can create split view pages by adding `split: true` to your page’s frontmatter:
+
+```yaml
+---
+split: true
+---
+```
+
+In split view, any content that contains a horizontal rule (`---`) will be divided into `left` and `right` portions, starting and ending at the closest H2/H3 headings.
+
+```markdown
+## Cool Headings
+
+Left-side content
+
+---
+
+Right-side content
+```
+
+In split view, code toggles can share a single page-wide toggle UI, floated at the top of the right-hand content pane. To do this, add a `code` list to your page’s frontmatter:
+
+```yaml
+---
+split: true
+code:
+  - php
+  - twig
+---
+```
+
+(Use the same language handles defined by `themeConfig.codeLanguages` in `.vuepress/config.js`.)
+
 
 ## Upgrading from v1.3.x
 
