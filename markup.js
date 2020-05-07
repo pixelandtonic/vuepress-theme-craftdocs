@@ -1,5 +1,14 @@
 const Token = require('markdown-it/lib/token');
-const container = require('markdown-it-container')
+const container = require('markdown-it-container');
+const { escapeHtml } = require('markdown-it/lib/common/utils');
+
+function renderInlineCode(tokens, idx, options, env, renderer) {
+    var token = tokens[idx];
+
+    return  '<code v-pre' + renderer.renderAttrs(token) + '>' +
+      escapeHtml(tokens[idx].content) +
+      '</code>';
+};
 
 function findPrev(tokens, idx, check) {
     for (let i = idx - 1; i >= 0; i--) {
@@ -21,57 +30,6 @@ function findNext(tokens, idx, check) {
 
 function increment(tokens) {
     tokens.forEach(t => t.level++)
-}
-
-function vPres(tokens) {
-    for (let i = 0; i < tokens.length; i++) {
-        if (!hasInlineCode(tokens[i])) {
-            continue;
-        }
-
-        let openIdx = findPrev(tokens, i, t => t.level === 0)
-        let closeIdx = findNext(tokens, i, t => t.level === 0)
-        if (
-            openIdx === false ||
-            closeIdx === false ||
-            ['paragraph_open', 'blockquote_open', 'bullet_list_open', 'ordered_list_open', 'table_open'].indexOf(tokens[openIdx].type) === -1 ||
-            ['paragraph_close', 'blockquote_close', 'bullet_list_close', 'ordered_list_close', 'table_close'].indexOf(tokens[closeIdx].type) === -1
-        ) {
-            continue;
-        }
-
-        let vPreOpen = new Token('container_v-pre_open', 'div', 1);
-        vPreOpen.markup = ':::';
-        vPreOpen.info = 'v-pre';
-
-        let vPreClose = new Token('container_v-pre_close', 'div', -1);
-        vPreClose.markup = ':::';
-
-        let innerTokens = tokens.slice(openIdx, closeIdx + 1);
-        increment(innerTokens)
-
-        let replaceTokens = [
-            vPreOpen,
-            ...innerTokens,
-            vPreClose
-        ]
-
-        tokens.splice(openIdx, closeIdx - openIdx + 1, ...replaceTokens)
-
-        // skip ahead
-        i = openIdx + replaceTokens.length - 1
-    }
-}
-
-function hasInlineCode(token) {
-    if (token.type === 'inline') {
-        for (let i = 0; i < token.children.length; i++) {
-            if (token.children[i].type === 'code_inline') {
-                return true;
-            }
-        }
-    }
-    return false;
 }
 
 function tables(tokens) {
@@ -236,11 +194,13 @@ function closeBlock(level) {
 }
 
 module.exports = (md) => {
+    // Custom <code> renders
+    md.renderer.rules.code_inline = renderInlineCode;
+
     // override parse()
     const parse = md.parse
     md.parse = (...args) => {
         const tokens = parse.call(md, ...args)
-        vPres(tokens);
         tables(tokens);
         codeToggles(tokens);
         split(tokens);
