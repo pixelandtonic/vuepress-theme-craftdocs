@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.3 - 2020-05-06
 ### Changed
 - Vue-style interpolation is now only disabled for inline `<code>` tags now (in addition to code blocks, per VuePress core).
 
