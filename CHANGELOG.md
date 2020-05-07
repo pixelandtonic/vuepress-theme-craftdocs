@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3 - 2020-05-06
+### Changed
+- Vue-style interpolation is now only disabled for inline `<code>` tags now (in addition to code blocks, per VuePress core).
+
 ## [2.0.2] - 2020-04-17
 ### Fixed
 - Fixed expandable sidebar heading’s active/expanded color.
