@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.5 - 2020-06-18
+### Fixed
+- Fixed slightly misaligned highlight styling in Algolia search results.
+
 ## 2.0.4 - 2020-06-01
 ### Changed
 - Apply bold style to `<dfn>` tags.
