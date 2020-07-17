@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Fixed
+- Added workaround to fix broken URL hash scroll ([VuePress #2428](https://github.com/vuejs/vuepress/issues/2428)).
+
 ## 2.0.5 - 2020-06-18
 ### Fixed
 - Fixed slightly misaligned highlight styling in Algolia search results.
