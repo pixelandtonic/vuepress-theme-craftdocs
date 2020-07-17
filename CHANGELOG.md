@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.6 - 2020-07-17
 ### Fixed
 - Added workaround to fix broken URL hash scroll ([VuePress #2428](https://github.com/vuejs/vuepress/issues/2428)).
 
