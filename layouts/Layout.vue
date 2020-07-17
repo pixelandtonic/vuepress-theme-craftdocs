@@ -110,6 +110,19 @@ export default {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
     });
+
+    // temporary means of scrolling to URL hash on load
+    // https://github.com/vuejs/vuepress/issues/2428
+    const hash = document.location.hash;
+    if (hash.length > 1) {
+      const id = hash.substring(1);
+      const element = document.getElementById(id);
+
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: y });
+      }
+    }
   },
 
   methods: {
