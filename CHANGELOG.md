@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.7 - 2020-09-18
+### Changed
+- Updated package requirements to resolve security issues.
+
+### Removed
+- Deleted old Yarn lockfile.
+
 ## 2.0.6 - 2020-07-17
 ### Fixed
 - Added workaround to fix broken URL hash scroll ([VuePress #2428](https://github.com/vuejs/vuepress/issues/2428)).
