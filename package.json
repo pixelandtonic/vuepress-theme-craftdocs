@@ -9,7 +9,7 @@
   "private": false,
   "dependencies": {
     "markdown-it": "^10.0.0",
-    "vuepress-plugin-container": "^2.1.4",
+    "vuepress-plugin-container": "^2.1.5",
     "vuex": "^3.5.1"
   },
   "devDependencies": {},
