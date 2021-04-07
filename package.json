@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-craftdocs",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "vuepress-theme",
   "main": "index.js",
   "repository": "https://github.com/pixelandtonic/vuepress-theme-craftdocs",
@@ -9,7 +9,7 @@
   "private": false,
   "dependencies": {
     "markdown-it": "^10.0.0",
-    "vuepress-plugin-container": "^2.1.4",
+    "vuepress-plugin-container": "^2.1.5",
     "vuex": "^3.6.2"
   },
   "devDependencies": {},

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.8 - 2021-04-07
+### Added
+- Added `smallerSidebarHeadings` and `widerSidebar` theme config settings that can be enabled to improve class reference sidebar menu headings. [#24](https://github.com/pixelandtonic/vuepress-theme-craftdocs/issues/24)
+
+### Changed
+- Updated dependencies to resolve security issues.
+
 ## 2.0.7 - 2020-09-18
 ### Changed
 - Updated package requirements to resolve security issues.

@@ -204,6 +204,37 @@ div.table {
   }
 }
 
+// support `smallerSidebarHeadings` setting for more compact sidebar
+.theme-container.smaller-sidebar-headings {
+  .sidebar {
+    .sidebar-links {
+      font-size: 95%;
+
+      li:not(:first-child) {
+        margin-top: 0;
+      }
+
+      .sidebar-heading {
+        font-size: 98%;
+      }
+    }
+  }
+}
+
+// support `widerSidebar` setting for longer sidebar headings
+.theme-container.wider-sidebar {
+  .sidebar {
+    width: 23rem;
+    .sidebar-links {
+      .collapsable {
+        .sidebar-heading {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
 @require '~@theme/styles/mobile.styl'
 @require '~@theme/styles/split.styl'
 
