@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Changed
+- Updated package requirements to resolve security issues.
+
 ## 2.0.7 - 2020-09-18
 ### Changed
 - Updated package requirements to resolve security issues.
