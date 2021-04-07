@@ -7,6 +7,7 @@ It makes the following changes over the default VuePress theme:
 - Adds support for [code language toggles](#code-toggles) and [split page views](#split-views).
 - Disables [interpolation](https://vuepress.vuejs.org/guide/using-vue.html#interpolation) for all inline `<code>` tags.
 - Improves `<table>` styling.
+- Adds `themeConfig` options to tweak sidebar sizing: `smallerSidebarHeadings` and `widerSidebar`. (Each `false` by default.)
 
 ## Setup
 
