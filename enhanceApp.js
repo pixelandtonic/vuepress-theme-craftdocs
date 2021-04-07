@@ -30,6 +30,8 @@ export default ({ Vue, options, router, siteData }) => {
   Object.assign(options, {
     data: {
       codeLanguage: null,
+      smallerSidebarHeadings: false,
+      widerSidebar: false,
     },
 
     store: new Vuex.Store({

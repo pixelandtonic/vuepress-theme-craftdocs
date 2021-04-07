@@ -83,6 +83,20 @@ export default {
       );
     },
 
+    hasSmallerSidebarHeadings() {
+      const { themeConfig } = this.$site;
+      return (
+        themeConfig.smallerSidebarHeadings === true
+      );
+    },
+
+    hasWiderSidebar() {
+      const { themeConfig } = this.$site;
+      return (
+        themeConfig.widerSidebar === true
+      );
+    },
+
     sidebarItems() {
       return resolveSidebarItems(
         this.$page,
@@ -99,6 +113,8 @@ export default {
           "no-navbar": !this.shouldShowNavbar,
           "sidebar-open": this.isSidebarOpen,
           "no-sidebar": !this.shouldShowSidebar,
+          "smaller-sidebar-headings": this.hasSmallerSidebarHeadings,
+          "wider-sidebar": this.hasWiderSidebar,
           split: this.$page.frontmatter.split,
         },
         userPageClass,
