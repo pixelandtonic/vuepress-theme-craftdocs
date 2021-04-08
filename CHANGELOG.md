@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.8.1 - 2021-04-08
+## 2.0.9 - 2021-04-08
 ### Fixed
 - Fixed breakpoints to prevent nav+content overlap in `widerSidebar` mode.
 
