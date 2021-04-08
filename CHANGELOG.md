@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.8.1 - 2021-04-08
+### Fixed
+- Fixed breakpoints to prevent nav+content overlap in `widerSidebar` mode.
+
 ## 2.0.8 - 2021-04-07
 ### Added
 - Added `smallerSidebarHeadings` and `widerSidebar` theme config settings that can be enabled to improve class reference sidebar menu headings. [#24](https://github.com/pixelandtonic/vuepress-theme-craftdocs/issues/24)
