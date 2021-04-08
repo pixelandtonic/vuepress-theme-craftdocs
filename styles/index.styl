@@ -221,17 +221,21 @@ div.table {
   }
 }
 
-// support `widerSidebar` setting for longer sidebar headings
-.theme-container.wider-sidebar {
-  .sidebar {
-    width: 23rem;
-    .sidebar-links {
-      .collapsable {
-        .sidebar-heading {
-          white-space: nowrap;
-        }
+// don’t awkwardly wrap toggle arrows in `widerSidebar` mode
+.theme-container.wider-sidebar .sidebar {
+  .sidebar-links {
+    .collapsable {
+      .sidebar-heading {
+        white-space: nowrap;
       }
     }
+  }
+}
+
+// support `widerSidebar` setting for longer sidebar headings
+@media (min-width: 1220px) {
+  .theme-container.wider-sidebar .sidebar {
+    width: 23rem;
   }
 }
 
