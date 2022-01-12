@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "vuepress-plugin-container": "^2.1.5",
     "vuex": "^3.6.2"
   },
